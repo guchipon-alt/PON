@@ -18,9 +18,15 @@
   --text-heading: #ffffff;
   --bg-input: #0c0c0d;
   --border-input: #212124;
+  --accent: #14b8a6;
+  --accent-dark: #0d9488;
 }
 
 /* Base style enhancements */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-app);
@@ -28,10 +34,10 @@ body {
   overflow-x: hidden;
 }
 
-/* Smooth transitions for all elements to prevent abrupt flashing when toggling theme */
+/* Smooth transitions for all elements */
 *, *::before, *::after {
   transition-property: background-color, border-color, color, fill, stroke, box-shadow;
-  transition-duration: 500ms;
+  transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -48,7 +54,7 @@ body {
   --border-input: #e4e4e7;
 }
 
-/* Precise CSS rules to adapt all dark components to the light theme */
+/* Precise CSS rules for light theme */
 .light-theme .bg-\[\#0c0c0d\] {
   background-color: var(--bg-app) !important;
 }
@@ -60,7 +66,7 @@ body {
 
 .light-theme .bg-\[\#151a18\],
 .light-theme .sm\:bg-\[\#151a18\] {
-  background-color: #f0fdf4 !important; /* soft emerald tint for verified post on light theme */
+  background-color: #f0fdf4 !important;
 }
 
 .light-theme .border-\[\#212124\],
@@ -127,7 +133,9 @@ body {
 .light-theme select,
 .light-theme textarea,
 .light-theme input[type="text"],
-.light-theme input[type="file"] {
+.light-theme input[type="file"],
+.light-theme input[type="email"],
+.light-theme input[type="password"] {
   background-color: var(--bg-input) !important;
   border-color: var(--border-input) !important;
   color: var(--text-heading) !important;
@@ -141,7 +149,6 @@ body {
   color: var(--text-secondary) !important;
 }
 
-/* Fix active feed tabs subtab */
 .light-theme .bg-\[\#232328\] {
   background-color: #e4e4e7 !important;
   color: #18181b !important;
@@ -153,26 +160,38 @@ body {
 
 /* Custom scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0f0f10;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #232326;
-  border-radius: 3px;
+  border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #2e2e33;
 }
 
+.light-theme ::-webkit-scrollbar-track {
+  background: #e9e9ee;
+}
 
-/* ===================================================================== */
-/* PON UI polish — added by PON agent (global, additive, theme-aware)    */
-/* ===================================================================== */
+.light-theme ::-webkit-scrollbar-thumb {
+  background: #c7c7cf;
+}
 
-/* Crisper text rendering everywhere */
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: #b0b0ba;
+}
+
+/* PON UI Polish */
+
+/* Crisper text rendering */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -180,68 +199,149 @@ body {
   letter-spacing: -0.011em;
 }
 
-/* Subtle depth on the app background instead of flat black */
+/* Subtle depth on background */
 body {
   background-image:
     radial-gradient(900px circle at 12% -10%, rgba(20,184,166,0.06), transparent 45%),
     radial-gradient(1100px circle at 100% 0%, rgba(99,102,241,0.05), transparent 50%);
   background-attachment: fixed;
 }
+
 .light-theme body {
   background-image:
     radial-gradient(900px circle at 12% -10%, rgba(20,184,166,0.10), transparent 45%),
     radial-gradient(1100px circle at 100% 0%, rgba(99,102,241,0.07), transparent 50%);
 }
 
-/* Display font + tighter tracking for big headings */
+/* Display font for headings */
 h1, h2, h3 {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
 }
 
 /* Brand-tinted text selection */
-::selection { background: rgba(20,184,166,0.30); }
+::selection {
+  background: rgba(20,184,166,0.30);
+  color: inherit;
+}
 
-/* Accessible, on-brand keyboard focus rings (usability / accessibility) */
+/* Keyboard focus rings */
 :focus-visible {
   outline: 2px solid rgba(20,184,166,0.75);
   outline-offset: 2px;
   border-radius: 8px;
 }
-button:focus:not(:focus-visible) { outline: none; }
 
-/* Inputs: clearer focus affordance with a soft brand glow */
-input[type="text"]:focus, input[type="email"]:focus,
-input[type="password"]:focus, textarea:focus, select:focus {
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Input focus states */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
   border-color: rgba(20,184,166,0.65) !important;
   box-shadow: 0 0 0 3px rgba(20,184,166,0.15);
 }
 
-/* Card depth: the main card surfaces all use this background */
+/* Card depth */
 .bg-\[\#161619\] {
   box-shadow: 0 1px 2px rgba(0,0,0,0.30), 0 10px 28px -14px rgba(0,0,0,0.55);
 }
+
 .light-theme .bg-\[\#161619\] {
   box-shadow: 0 1px 2px rgba(17,24,39,0.05), 0 12px 32px -20px rgba(17,24,39,0.25) !important;
 }
 
-/* Gentle hover emphasis on large rounded cards */
+/* Hover emphasis on cards */
 .rounded-2xl.bg-\[\#161619\]:hover,
 .rounded-3xl.bg-\[\#161619\]:hover {
   border-color: #2e2e34;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.40), 0 12px 32px -10px rgba(0,0,0,0.65);
 }
+
 .light-theme .rounded-2xl.bg-\[\#161619\]:hover,
 .light-theme .rounded-3xl.bg-\[\#161619\]:hover {
   border-color: #d4d4d8 !important;
 }
 
-/* Primary white CTA buttons: a touch more depth + press feedback */
-button.bg-white { box-shadow: 0 6px 18px -8px rgba(0,0,0,0.55); }
-button.bg-white:active { transform: translateY(0.5px); }
+/* CTA buttons */
+button.bg-white {
+  box-shadow: 0 6px 18px -8px rgba(0,0,0,0.55);
+}
 
-/* Slightly wider, smoother scrollbar */
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-thumb { border-radius: 4px; }
-.light-theme ::-webkit-scrollbar-track { background: #e9e9ee; }
-.light-theme ::-webkit-scrollbar-thumb { background: #c7c7cf; }
-.light-theme ::-webkit-scrollbar-thumb:hover { background: #b0b0ba; }
+button.bg-white:active {
+  transform: translateY(0.5px);
+}
+
+button.bg-white:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Link underline on hover */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Better button cursor */
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

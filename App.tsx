@@ -3290,7 +3290,7 @@ export default function App() {
                   <div className="space-y-3 pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3 bg-white hover:bg-neutral-100 text-black font-semibold text-xs rounded-full transition-all tracking-wide shadow-md font-sans"
+                      className="w-full py-3.5 bg-white hover:bg-neutral-100 text-black font-semibold text-sm rounded-full transition-all tracking-wide shadow-lg shadow-black/20 active:scale-[0.98] font-sans"
                     >
                       Подтвердить
                     </button>

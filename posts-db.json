@@ -1,0 +1,9 @@
+{
+  "posts": [],
+  "stats": {
+    "totalPostsAnalyzed": 0,
+    "detectedBots": 0,
+    "warningsIssued": 0,
+    "verifiedClaims": 0
+  }
+}

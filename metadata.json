@@ -1,0 +1,6 @@
+{
+  "name": "PON Social Network",
+  "description": "A highly interactive, realistic social network clone based on 'itd.com', branded as 'PON'. Features include a sleek dark layout, real post publication, image attachments, comment sections, and authentic community feeds.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

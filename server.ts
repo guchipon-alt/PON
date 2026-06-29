@@ -449,12 +449,8 @@ app.post("/api/auth/send-code", async (req, res) => {
       return res.status(502).json({ error: "Не удалось отправить письмо с кодом. Попробуйте позже." });
     }
   } else {
-    if (process.env.NODE_ENV !== "production") {
-      console.warn("[SMTP Warning] SMTP not configured — returning code in DEV mode only.");
-      return res.json({ success: true, smtp: false, smtpNotConfigured: true, code });
-    }
-    console.error("[SMTP] Not configured in production — cannot send verification codes.");
-    return res.status(503).json({ error: "Сервис подтверждения почты временно недоступен (SMTP не настроен)." });
+    console.warn("[SMTP Warning] SMTP not configured — returning code directly (demo mode).");
+    return res.json({ success: true, smtp: false, smtpNotConfigured: true, code });
   }
 });
 

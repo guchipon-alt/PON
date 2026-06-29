@@ -166,3 +166,82 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #2e2e33;
 }
+
+
+/* ===================================================================== */
+/* PON UI polish — added by PON agent (global, additive, theme-aware)    */
+/* ===================================================================== */
+
+/* Crisper text rendering everywhere */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.011em;
+}
+
+/* Subtle depth on the app background instead of flat black */
+body {
+  background-image:
+    radial-gradient(900px circle at 12% -10%, rgba(20,184,166,0.06), transparent 45%),
+    radial-gradient(1100px circle at 100% 0%, rgba(99,102,241,0.05), transparent 50%);
+  background-attachment: fixed;
+}
+.light-theme body {
+  background-image:
+    radial-gradient(900px circle at 12% -10%, rgba(20,184,166,0.10), transparent 45%),
+    radial-gradient(1100px circle at 100% 0%, rgba(99,102,241,0.07), transparent 50%);
+}
+
+/* Display font + tighter tracking for big headings */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Brand-tinted text selection */
+::selection { background: rgba(20,184,166,0.30); }
+
+/* Accessible, on-brand keyboard focus rings (usability / accessibility) */
+:focus-visible {
+  outline: 2px solid rgba(20,184,166,0.75);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+button:focus:not(:focus-visible) { outline: none; }
+
+/* Inputs: clearer focus affordance with a soft brand glow */
+input[type="text"]:focus, input[type="email"]:focus,
+input[type="password"]:focus, textarea:focus, select:focus {
+  border-color: rgba(20,184,166,0.65) !important;
+  box-shadow: 0 0 0 3px rgba(20,184,166,0.15);
+}
+
+/* Card depth: the main card surfaces all use this background */
+.bg-\[\#161619\] {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.30), 0 10px 28px -14px rgba(0,0,0,0.55);
+}
+.light-theme .bg-\[\#161619\] {
+  box-shadow: 0 1px 2px rgba(17,24,39,0.05), 0 12px 32px -20px rgba(17,24,39,0.25) !important;
+}
+
+/* Gentle hover emphasis on large rounded cards */
+.rounded-2xl.bg-\[\#161619\]:hover,
+.rounded-3xl.bg-\[\#161619\]:hover {
+  border-color: #2e2e34;
+}
+.light-theme .rounded-2xl.bg-\[\#161619\]:hover,
+.light-theme .rounded-3xl.bg-\[\#161619\]:hover {
+  border-color: #d4d4d8 !important;
+}
+
+/* Primary white CTA buttons: a touch more depth + press feedback */
+button.bg-white { box-shadow: 0 6px 18px -8px rgba(0,0,0,0.55); }
+button.bg-white:active { transform: translateY(0.5px); }
+
+/* Slightly wider, smoother scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { border-radius: 4px; }
+.light-theme ::-webkit-scrollbar-track { background: #e9e9ee; }
+.light-theme ::-webkit-scrollbar-thumb { background: #c7c7cf; }
+.light-theme ::-webkit-scrollbar-thumb:hover { background: #b0b0ba; }

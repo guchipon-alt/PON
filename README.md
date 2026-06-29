@@ -1,20 +1,219 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+<img width="1200" height="475" alt="PON Banner" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200" />
 </div>
 
-# Run and deploy your AI Studio app
+# 🌐 PON - Сеть Нового Поколения (Next Generation Network)
 
-This contains everything you need to run your app locally.
+**PON** — это децентрализованная социальная сеть нового поколения с ИИ-модерацией, проверкой фактов и защитой от ботов. Построена на React, TypeScript, Express и Google Gemini AI.
 
-View your app in AI Studio: https://ai.studio/apps/7a0421fa-eb95-4019-8da3-9f0bb18391c8
+### 🎯 Основные возможности
 
-## Run Locally
+- ✅ **ИИ-модерация контента** — Gemini анализирует каждый пост в реальном времени
+- ✅ **Проверка фактов** — Автоматическая верификация статистики и новостей
+- ✅ **Защита от ботов** — Детектирование автоматизированных аккаунтов
+- ✅ **Text-to-Speech** — Озвучка постов синтезатором речи
+- ✅ **Личные сообщения** — Безопасный обмен с взаимными подписчиками
+- ✅ **Темная/светлая тема** — Адаптивный дизайн с Tailwind CSS
+- ✅ **Кастомизация профиля** — Рисование баннера прямо в браузере
 
-**Prerequisites:**  Node.js
+---
 
+## 🚀 Быстрый старт
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Требования
+- **Node.js** 18+ 
+- **npm** или **yarn**
+- **Gemini API key** (опционально для полного функционала)
+
+### Установка и запуск
+
+1. **Клонируй репозиторий:**
+```bash
+git clone https://github.com/guchipon-alt/PON.git
+cd PON
+```
+
+2. **Установи зависимости:**
+```bash
+npm install
+```
+
+3. **Создай файл `.env.local`** (автоматически работает в demo режиме):
+```bash
+cp .env.example .env.local
+```
+
+4. **Запусти приложение:**
+```bash
+npm run dev
+```
+
+Приложение запустится на **http://localhost:3000**
+
+### Продакшен сборка
+
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## 🏗️ Структура проекта
+
+```
+PON/
+├── App.tsx              # Главный компонент приложения (~4000 строк)
+├── ErrorBoundary.tsx    # Обработка ошибок и крахов
+├── server.ts            # Express сервер с API эндпоинтами
+├── index.css            # Tailwind + глобальные стили
+├── main.tsx             # React точка входа
+├── vite.config.ts       # Конфигурация Vite
+├── package.json         # Зависимости
+├── posts-db.json        # Локальная БД постов
+├── .env.local           # Локальная конфигурация
+├── DEPLOY.md            # Инструкции по деплою
+├── STARTUP_GUIDE.md     # Подробное руководство
+└── Dockerfile           # Docker образ
+```
+
+### Основные компоненты:
+
+| Файл | Описание |
+|------|---------|
+| **App.tsx** | Основной компонент с лентой, профилем, чатом поддержки, ИИ-мониторингом |
+| **ErrorBoundary.tsx** | Защита от крахов приложения |
+| **server.ts** | Express API для постов, аутентификации, TTS, саппорта, DM |
+| **index.css** | Tailwind + кастомные стили для светлой/темной темы |
+
+---
+
+## 🔧 API эндпоинты
+
+### Посты
+```bash
+GET    /api/posts              # Получить все посты
+POST   /api/posts              # Создать новый пост
+POST   /api/posts/:id/like     # Лайкнуть пост
+POST   /api/posts/:id/comment  # Добавить комментарий
+```
+
+### Аутентификация
+```bash
+POST   /api/auth/send-code      # Отправить код на email
+POST   /api/auth/verify-code    # Проверить код
+```
+
+### ИИ сервисы
+```bash
+GET    /api/stats                           # Статистика ИИ-анализа
+POST   /api/tts                             # Text-to-Speech синтез
+POST   /api/support/chat                    # Технический саппорт (ИИ)
+POST   /api/messages/chat                   # Direct Message с ИИ-ботами
+POST   /api/illustration-suggestions        # Предложения иллюстраций
+```
+
+---
+
+## ⚙️ Переменные окружения
+
+| Переменная | Описание | Обязательно |
+|-----------|---------|-----------|
+| `GEMINI_API_KEY` | API ключ Google Gemini | Нет (работает без него) |
+| `PORT` | Порт сервера | Нет (по умолчанию 3000) |
+| `NODE_ENV` | development/production | Нет |
+| `SMTP_HOST` | SMTP хост для отправки писем | Нет |
+| `SMTP_USER` | SMTP пользователь | Нет |
+| `SMTP_PASS` | SMTP пароль | Нет |
+
+---
+
+## 🎨 Дизайн и стиль
+
+- **Цветовая схема**: Темная тема (#0c0c0d) с акцентом на teal (#14b8a6)
+- **Шрифты**: Space Grotesk (display), JetBrains Mono (mono), Inter (sans)
+- **Адаптивность**: Mobile-first дизайн, работает на всех устройствах
+- **Анимации**: Motion.js для плавных переходов
+
+---
+
+## 📱 Нажми для быстрой регистрации
+
+Аккаунт по умолчанию:
+- **Email**: pon@gmail.com
+- **Пароль**: 1234
+- **Юзернейм**: @pon_user
+
+Для админ доступа используй **@guchipon**
+
+---
+
+## 🛠️ Разработка
+
+### Доступные команды
+
+```bash
+npm run dev          # Запуск в dev режиме с HMR
+npm run build        # Сборка для продакшена
+npm run start        # Запуск собранного приложения
+npm run preview      # Превью prod сборки локально
+npm run lint         # TypeScript проверка
+npm run clean        # Очистка dist/ директории
+```
+
+---
+
+## 🐳 Docker деплой
+
+```bash
+docker build -t pon-network .
+docker run -p 3000:3000 -e GEMINI_API_KEY=your_key pon-network
+```
+
+---
+
+## 📖 Документация
+
+- [STARTUP_GUIDE.md](./STARTUP_GUIDE.md) - Подробное руководство по запуску
+- [DEPLOY.md](./DEPLOY.md) - Инструкции по деплою на Render, Cloud Run
+- [.env.example](./.env.example) - Пример конфигурации
+
+---
+
+## 🤝 Особенности
+
+### ИИ-анализ контента
+Каждый пост анализируется Gemini для:
+- Определения бот-активности (botConfidence)
+- Проверки на неприемлемый контент
+- Верификации цифр и статистики
+- Fact-checking новостей и политики
+
+### Синтез речи
+- Озвучка постов голосом разные для каждого автора
+- Эмоциональная интонация на основе содержания
+- Поддержка русского языка
+
+### Персонализация
+- Профиль с аватаром и кастомным баннером
+- Рисование прямо в браузере (canvas)
+- Тема оформления (светлая/темная)
+
+---
+
+## 📊 Статистика
+
+- **Язык**: TypeScript 96.8%, CSS 2.9%
+- **Фреймворк**: React 19 + Express 4
+- **Размер приложения**: ~190KB (App.tsx)
+- **API эндпоинтов**: 10+
+
+---
+
+## 📝 Лицензия
+
+Public - используй свободно!
+
+---
+
+**Сделано с ❤️ для сети нового поколения**
